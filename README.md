@@ -1,5 +1,8 @@
 # cyber-security
-My journey into cybersecurity and penetration testing.
+My journey into cybersecurity and penetration testing. Transitioning into Cybersecurity with focus on Penetration Testing and Vulnerability Assessment.
+
+Location: Netherlands  
+Background: IT Operations, QA, Support
 
 ## Skills
 
