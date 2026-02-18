@@ -14,6 +14,11 @@ Background: IT Operations, QA, Support
 ## Labs Completed
 
 - TryHackMe Labs
+  dirb http:// shown the open link after + icon
+  Framework version and changelog can tell about potential vulnnerabilities
+  Accessing the directories like /assets can give unpermittedd access
+  DOM structuree might contain secret pages
+  
 - HackTheBox Machines
 - PortSwigger Labs
 
