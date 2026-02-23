@@ -84,8 +84,16 @@ user@tryhackme$ curl -H "Cookie: logged_in=true; admin=true" http://10.112.181.8
 https://crackstation.net for reverse the hash of any type
 https://www.base64encode.org
 
+IDOR stands for Insecure Direct Object Reference and is a type of access control vulnerability.
 
-
+SSRF stands for Server-Side Request Forgery cane be 2 types:
+- regular SSRF where data is returned to the attacker's screen
+- Blind SSRF vulnerability where an SSRF occurs, but no information is returned to the attacker's screen.
+A successful SSRF attack can result in any of the following: 
+Access to unauthorised areas.
+Access to customer/organisational data.
+Ability to Scale to internal networks.
+Reveal authentication tokens/credentials.
 
   
 - HackTheBox Machines
