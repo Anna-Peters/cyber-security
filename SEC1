@@ -1,0 +1,5 @@
+Linux CLI:
+1. grep "search keyword" file name
+grep -E "value1|value2|value3|" file name
+2. wc -l file name for the amount of entries in the file
+3. find -name filename and find -name *.fileformat
