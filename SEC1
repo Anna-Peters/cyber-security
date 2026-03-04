@@ -3,3 +3,19 @@ Linux CLI:
 grep -E "value1|value2|value3|" file name
 2. wc -l file name for the amount of entries in the file
 3. find -name filename and find -name *.fileformat
+4. & to run the command in the background
+5. && to chain the commands, coomand1 && command2, command2 will be only executed if command1 is successfull
+6. echo "textvalue > filename - replace the txt in the file
+7. echo "textvalue" >> filename - add text to the file 
+8. ssh accountusername@IP -> enter the password to connect to the remote machine
+9. touch name of the file - to create a file
+10. mkdir to create directory
+11. rm filename or rm -R directory name to remove file or directory
+12. mv filename1 filename2 - rename the filename1 and merge the content filename2
+13. file filename - to know the file extension
+14. su account name
+15. ls -lh to check permisssions 
+r = 4
+w = 2
+e = 1 
+777 = full access for owner, group and others
