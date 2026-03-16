@@ -1,5 +1,5 @@
 Connect to ftp
-ftp ip address port (21)
+ftp ip address + default port 21
 enter login and password
 ls to check the files
 ascii switched to ASCII mode for a text file
