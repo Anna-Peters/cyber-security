@@ -1,0 +1,7 @@
+Telnet command:
+telnet ip adress poort
+
+Example:
+GET /flag.html HTTP/1.1
+Host: ip address
+empty line
