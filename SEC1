@@ -22,4 +22,6 @@ e = 1
 
 Active Directory
 mstsc /v:ip address, to access remote machine after the delegation done
-GPO's for a spicific policies can be extracted in cmd to see the full list.
+GPO's for a spicific policies can be extracted in cmd to see the full list. Can be placed under the domain or under organization units.
+PC-01 -> PC-01$ machine name 
+
