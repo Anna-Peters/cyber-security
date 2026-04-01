@@ -19,3 +19,7 @@ r = 4
 w = 2
 e = 1 
 777 = full access for owner, group and others
+
+Active Directory
+mstsc /v:ip address, to access remote machine after the delegation done
+GPO's for a spicific policies can be extracted in cmd to see the full list.
