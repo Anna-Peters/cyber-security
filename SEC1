@@ -44,3 +44,33 @@ dir /s - Displays files in the current directory and all subdirectories.
 13. chkdsk: checks the file system and disk volumes for errors and bad sectors.
 14. driverquery: displays a list of installed device drivers.
 15. sfc /scannow: scans system files for corruption and repairs them if possible.
+
+Powershell
+Get-Command -CommandType "Function" 
+Get-help name_of_cmdlets
+Get-alias for Windowns CLIc\ commands
+
+Cmdlet -Property "pattern*" - Find-Module -Name "PowerShell*" 
+Install-Module -Name "PowerShellGet"
+ls/dir - GetChildItem
+cd - Set-Location -Path ".\path_name"
+Create a new item or fodler: New-Item -Path ".\captain-cabin\captain-wardrobe\file_name.txt" -ItemType "Directory" or -ItemType "file
+
+Copy-Item -Path .\captain-cabin\file_name_1.txt -Destination .\captain-cabin\file_name_2.txt
+type/cat - Get-Content -Path ".\file_name"
+
+Sort-bject 
+Get-ChildItem | Sort-Object Length -Descending | Select-Object -First 1
+Get-ChildItem | Select-Object Name,Length 
+Get-ChildItem | Where-Object -Property "Name" -like "ship*"
+
+grep/findstr - Select-String -Path ".\captain-hat.txt" -Pattern "hat"
+Where-Object filters the files by their Extension property, ensuring that only files with extension equal (-eq) to .txt are listed.
+
+The operator -eq (i.e. "equal to") is part of a set of comparison operators that are shared with other scripting languages (e.g. Bash, Python). To show the potentiality of the PowerShell's filtering, we have selected some of the most useful operators from that list:
+
+-ne: "not equal". This operator can be used to exclude objects from the results based on specified criteria.
+-gt: "greater than". This operator will filter only objects which exceed a specified value. It is important to note that this is a strict comparison, meaning that objects that are equal to the specified value will be excluded from the results.
+-ge: "greater than or equal to". This is the non-strict version of the previous operator. A combination of -gt and -eq.
+-lt: "less than". Like its counterpart, "greater than", this is a strict operator. It will include only objects which are strictly below a certain value.
+-le: "less than or equal to". Just like its counterpart -ge, this is the non-strict version of the previous operator. A combination of -lt and -eq.
