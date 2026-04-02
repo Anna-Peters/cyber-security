@@ -25,3 +25,22 @@ mstsc /v:ip address, to access remote machine after the delegation done
 GPO's for a spicific policies can be extracted in cmd to see the full list. Can be placed under the domain or under organization units.
 PC-01 -> PC-01$ machine name 
 
+CLI Windows:
+
+1. driverquery | more show page by page results
+2. systeminfo, ver for details 
+3. ssh user_name@ip_address
+4. ping 
+5. netstat - abon
+6. nslookup
+7. tracert
+8. dir, mdir, rmdir
+dir /a - Displays hidden and system files as well.
+dir /s - Displays files in the current directory and all subdirectories.
+9. cd for the current directory
+10. copy *.md C:\Markdown
+11. type, more use with Spacebar
+12. erase, del
+13. chkdsk: checks the file system and disk volumes for errors and bad sectors.
+14. driverquery: displays a list of installed device drivers.
+15. sfc /scannow: scans system files for corruption and repairs them if possible.
