@@ -66,6 +66,9 @@ Get-ChildItem | Where-Object -Property "Name" -like "ship*"
 
 grep/findstr - Select-String -Path ".\captain-hat.txt" -Pattern "hat"
 Where-Object filters the files by their Extension property, ensuring that only files with extension equal (-eq) to .txt are listed.
+Get-ChildItem | Where-Object -Property "Name" -like "ship*" 
+PS C:\Users\captain\Documents\captain-cabin> Get-ChildItem | Where-Object -Property "Name" -like "ship*"  
+Get-ChildItem | Where-Object -Property "Extension" -eq ".txt"
 
 The operator -eq (i.e. "equal to") is part of a set of comparison operators that are shared with other scripting languages (e.g. Bash, Python). To show the potentiality of the PowerShell's filtering, we have selected some of the most useful operators from that list:
 
@@ -74,3 +77,11 @@ The operator -eq (i.e. "equal to") is part of a set of comparison operators that
 -ge: "greater than or equal to". This is the non-strict version of the previous operator. A combination of -gt and -eq.
 -lt: "less than". Like its counterpart, "greater than", this is a strict operator. It will include only objects which are strictly below a certain value.
 -le: "less than or equal to". Just like its counterpart -ge, this is the non-strict version of the previous operator. A combination of -lt and -eq.
+
+Get-NetTCPConnection displays current TCP connections, giving insights into both local and remote endpoints. This cmdlet is particularly handy during an incident response or malware analysis task, as it can uncover hidden backdoors or established connections towards an attacker-controlled server.
+Scripting:
+For blue team professionals such as incident responders, malware analysts, and threat hunters, PowerShell scripts can automate many different tasks, including log analysis, detecting anomalies, and extracting indicators of compromise (IOCs). These scripts can also be used to reverse-engineer malicious code (malware) or automate the scanning of systems for signs of intrusion.
+
+For the red team, including penetration testers and ethical hackers, PowerShell scripts can automate tasks like system enumeration, executing remote commands, and crafting obfuscated scripts to bypass defences. Its deep integration with all types of systems makes it a powerful tool for simulating attacks and testing systems’ resilience against real-world threats.
+get-help invole-command -examples
+
