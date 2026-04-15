@@ -51,3 +51,9 @@ FTP: Could allow anonymous login and provide access to interesting files.
 SMB: Could be vulnerable to SMB exploits like MS17-010
 SSH: Could have default or easy to guess credentials
 RDP: Could be vulnerable to Bluekeep or allow desktop access if weak credentials were used. 
+
+
+Hashdump user_name for Windows
+Hashdump is a Meterpreter command used to extract and display the password hashes stored in the SAM database of a Windows machine. This command is executed on the exploited machine to retrieve the NTLM hashes of user accounts.
+
+Use double backslashes in the path in meterpreter 
