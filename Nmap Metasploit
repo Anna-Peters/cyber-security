@@ -1,0 +1,53 @@
+Nmap uses multiple ways to specify its targets:
+
+IP range using -: If you want to scan all the IP addresses from 192.168.0.1 to 192.168.0.10, you can write 192.168.0.1-10
+IP subnet using /: If you want to scan a subnet, you can express it as 192.168.0.1/24, and this would be equivalent to 192.168.0.0-255
+Hostname: You can also specify your target by hostname, for example, example.thm
+
+nmap -sn 192.168.66.0/24
+nmap -sL 192.168.0.1/24 - without scanning the devices, usefull to specify the exact address before executing other nmap commands
+
+Scanning TCP Ports
+The easiest and most basic way to know whether a TCP port is open would be to attempt to telnet to the port. If you are inclined to scan with a Telnet client, try to establish a TCP connection with every target port. In other words, you attempt to complete the TCP three-way handshake with every target port; however, only open TCP ports would respond appropriately and allow a TCP connection to be established. This procedure is not very different from Nmap’s connect scan.
+
+Connect Scan -sT - TCP scna to complete three-way handshake
+TCP SYN Scan -sS - The advantage is that this is expected to lead to fewer logs as the connection is never established, and hence, it is considered a relatively stealthy scan. You can select the SYN scan using the -sS flag.The tree-way handshake has never completed.
+Scan UDP services -sU
+-F is for Fast mode, which scans the 100 most common ports (instead of the default 1000).
+-p[range] allows you to specify a range of ports to scan. For example, -p10-1024 scans from port 10 to port 1024, while -p-25 will scan all the ports between 1 and 25. Note that -p- scans all the ports and is equivalent to -p1-65535 and is the best option if you want to be as thorough as possible.
+Tip: The most common services use a port number between 1 and 1024 for either UDP or TCP. These ports are also known as well-known ports. Use -p1-1023 to scan for the well-known ports.
+-O	OS detection
+-sV	Service and version detection
+-A	OS detection, version detection, and other additions
+-Pn	Scan hosts that appear to be down
+-T<0-5>	Timing template – paranoid (0), sneaky (1), polite (2), normal (3), aggressive (4), and insane (5)
+--min-parallelism <numprobes> and --max-parallelism <numprobes>	Minimum and maximum number of parallel probes
+--min-rate <number> and --max-rate <number>	Minimum and maximum rate (packets/second)
+--host-timeout	Maximum amount of time to wait for a target host
+exmple: nmap -sS MACHINE_IP -F
+-v	Verbosity level – for example, -vv and -v4
+-d	Debugging level – for example -d and -d9
+Report	
+-oN <filename>	Normal output
+-oX <filename>	XML output
+-oG <filename>	grep-able output
+-oA <basename>	Output in all major formats
+
+sudo nmap ip_address -sS for all open TCp ports
+protocol and port number are corespond: http://ip_adress:port_number
+
+Database scanning
+1: msfconsole
+2. db_nmap -sV -p ip_address
+3. use tht module
+4. hosts -R
+5. Check RHOSTS value in show options
+6. add other options if needed
+7. run the module
+You may want to look for low-hanging fruits such as:
+
+HTTP: Could potentially host a web application where you can find vulnerabilities like SQL injection or Remote Code Execution (RCE).
+FTP: Could allow anonymous login and provide access to interesting files.
+SMB: Could be vulnerable to SMB exploits like MS17-010
+SSH: Could have default or easy to guess credentials
+RDP: Could be vulnerable to Bluekeep or allow desktop access if weak credentials were used. 
