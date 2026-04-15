@@ -1,0 +1,21 @@
+tcpdump -r traffic.pcap port 53 -n | head -n 1 - DNS filtering in the saved file for the first line
+pcap-filter examples:
+
+ether[0] & 1 != 0 takes the first byte in the Ethernet header and the decimal number 1 (i.e., 0000 0001 in binary) and applies the & (the And binary operation). It will return true if the result is not equal to the number 0 (i.e., 0000 0000). The purpose of this filter is to show packets sent to a multicast address. A multicast Ethernet address is a particular address that identifies a group of devices intended to receive the same data.
+ip[0] & 0xf != 5 takes the first byte in the IP header and compares it with the hexadecimal number F (i.e., 0000 1111 in binary). It will return true if the result is not equal to the (decimal) number 5 (i.e., 0000 0101 in binary). The purpose of this filter is to catch all IP packets with options.
+
+tcpdump -r traffic.pcap greater 15000 -n
+
+TCP search:
+tcpdump "tcp[tcpflags] == tcp-syn" to capture TCP packets with only the SYN (Synchronize) flag set, while all the other flags are unset.
+tcpdump "tcp[tcpflags] & tcp-syn != 0" to capture TCP packets with at least the SYN (Synchronize) flag set.
+tcpdump "tcp[tcpflags] & (tcp-syn|tcp-ack) != 0" to capture TCP packets with at least the SYN (Synchronize) or ACK (Acknowledge) flags set.
+TCP flags are available to compare with:
+
+tcp-syn TCP SYN (Synchronize)
+tcp-ack TCP ACK (Acknowledge)
+tcp-fin TCP FIN (Finish)
+tcp-rst TCP RST (Reset)
+tcp-push TCP Push
+
+tctdump -r traffic.pcap arp -e
