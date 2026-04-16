@@ -1,0 +1,14 @@
+python3 hash-id.py < file_name with hash - get the hash method to be used in the format
+
+
+John The Ripper
+john --list=formats
+john --session=[] --format=[raw-md5, etc] --wordlist=[] file_name
+
+NTHash / NTLM
+john --session=[] --format=NT --wordlists= file_name
+
+linux root user hash cracking
+combine pssws and shadow via unshadow 
+unshadow local_psswd local_shadow > file_name.txt
+Feed the unshadow file to john, if hashing method can be recognized visually (https://hashcat.net/wiki/doku.php?id=example_hashes, use --format without python hash-id.py)
