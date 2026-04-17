@@ -22,3 +22,7 @@ Rar files
 rar2john zip_name > new_file_name.txt 
 john --wordlist=/location hash_file_name 
 unrar x zip_name
+
+id_rsa
+install ssh2john or run python3 /locaiton/ssh2john.py rsa_file > hash_file_name.txt
+john --wordlist=/location hash_file_name 
