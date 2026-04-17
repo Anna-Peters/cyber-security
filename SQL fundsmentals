@@ -12,4 +12,33 @@ SELECT name, COUNT(*)
 SELECT DISTINCT name FROM books;
 ---
 Logical operators: like, between, or, and, not
-
+SELECT *
+    FROM books
+    WHERE description LIKE "%guide%";
+----
+ SELECT *
+    FROM books
+    WHERE category = "Offensive Security" AND name = "Bug Bounty Bootcamp"; 
+----
+SELECT *
+    FROM books
+    WHERE name LIKE "%Android%" OR name LIKE "%iOS%"; 
+----
+SELECT *
+    FROM books
+    WHERE id BETWEEN 2 AND 4;
+----
+Functions: concat, 
+SELECT CONCAT(name, " is a type of ", category, " book.") AS book_info FROM books;
+---
+select group_concat(name separator "&") as tool_names_group from hacking_tools where amount % 10 !=0  group by amount;
+----
+SELECT GROUP_CONCAT(name SEPARATOR ' & ') AS tool_names_group
+FROM hacking_tools
+WHERE amount != 0
+GROUP BY amount;
+---
+SELECT name, LENGTH(name) AS name_length 
+FROM hacking_tools 
+GROUP BY name;
+----
