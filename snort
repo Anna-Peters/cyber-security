@@ -1,0 +1,19 @@
+ ls /etc/snort
+ Rule creation: sudo nano /etc/snort/rules/local.rules
+ rule exampls: alert icmp any any -> 127.0.0.1 any (msg:"Loopback Ping Detected"; sid:10003; rev:1;)
+
+ The details of the componentsof the rule:
+Action: This specifies which action to take when the rule triggers. In this case, we have the action to "alert" when the traffic matches this rule.
+Protocol: This refers to the protocol that matches this rule. In this case, we use the protocol "ICMP" when pinging a host.
+Source IP: This determines the IP originating from the traffic. Since we want to detect traffic from any source IP, we set this as "any".
+Source port: This determines the port from which the traffic originates. Since we want to detect traffic from any source port, we set this as "any".
+Destination IP: This specifies the destination IP to which the matching traffic comes; it generates the alert. In this case, we used "$HOME_NET". This is a variable, and we defined its value as our whole network’s range in Snort’s configuration file.
+Destination port: This specifies the port the traffic would reach. Since we want to detect traffic coming to any port, we set it to "any."
+Rule metadata: Every rule has some metadata. That is defined at the end of the rule in parentheses. The following are its components:
+Message (msg): This describes the message displayed when the subject rule triggers. The message should indicate the type of activity detected. In this case, we used "Ping Detected".
+Signature ID (sid): Every rule has a unique identifier that differentiates it from others. This identifier is called the signature ID (sid). In this case, we set the sid to "10001".
+Rule revision (rev): This sets the rule's revision number. Every time the rule is modified, its revision number is incremented, which helps in tracking changes to any rule.
+Rule testing: sudo snort -q -l /var/log/snort -i lo -A console -c /etc/snort/snort.conf
+
+To perform on PCAP file:
+sudo snort -q -l /var/log/snort -r Task.pcap -A console -c /etc/snort/snort.conf
