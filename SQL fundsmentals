@@ -1,0 +1,15 @@
+mysql -u user_name -p
+show databases - to see the list of databases
+use database - to switch
+show tables
+describe table_name to read the properties
+Clauses: order by, group by, having, distinct
+SELECT name, COUNT(*)
+    FROM books
+    GROUP BY name
+    HAVING name LIKE '%Hack%';
+---
+SELECT DISTINCT name FROM books;
+---
+Logical operators: like, between, or, and, not
+
