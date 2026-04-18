@@ -1,0 +1,10 @@
+FoxyProxy to enable the Burp mode
+Burp to enable the interceptor, that will hang the requests
+While interceptor is off, Sitemap will map the site, has access to vulnerabilities scanning and control over the scope settings. Whle scopeis limited, the interceptor will still catch all traffic, to disable it Go to Settings-> Proxy -> Response/request rules -> And URL Is in terget group should be enabled for both rules.
+To acceept the PortSwigger CA certificate for TLS communication through the Burp Proxy: Download the CA Certificate: With the Burp Proxy activated, navigate to http://burp/cert. This will download a file called cacert.der. Save this file somewhere on your machine.Access Firefox Certificate Settings: Type about:preferences into your Firefox URL bar and press Enter. This will take you to the Firefox settings page. Search the page for "certificates" and click on the View Certificates button.Import the CA Certificate: In the Certificate Manager window, click on the Import button. Select the cacert.der file that you downloaded in the previous step.
+Set Trust for the CA Certificate: In the subsequent window that appears, check the box that says "Trust this CA to identify websites" and click OK.
+
+XSS via Burp:
+1. Submit the request via the form
+2. Intercept POST, open Raw and edit edit the payload via adding js script, Ctrl + U for encoding, press Forward
+3. Disable Interceptor to see the alert
