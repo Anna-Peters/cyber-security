@@ -1,0 +1,18 @@
+Directory and file enumeration
+gobuster dir -u "http://www.example.thm" -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -r -x .js
+This command scans all the directories located at www.example.thm using the wordlist directory-list-2.3-medium.txt. Let’s look a bit closer at each part of the command:
+gobuster dir: Configures Gobuster to use the directory and file enumeration mode.
+-u http://www.example.thm:
+The URL will be the base path where Gobuster starts looking. So, the URL  above is using the root web directory. For example, in a typical Apache installation on Linux, this is /var/www/html. So if you have a “resources” directory and you want to enumerate that directory, you’d set the URL as http://www.example.thm/resources. You can also think of this like http://www.example.thm/path/to/folder.
+The URL must contain the protocol used, in this case, HTTP. This is important and required. If you pass the wrong protocol, the scan will fail.
+In the host part of the URL, you can either fill in the IP or the HOSTNAME. However, it is important to mention that when using the IP, you may target a different website than intended. A web server can host multiple websites using one IP (this technique is also called virtual hosting). Use the HOSTNAME if you want to be sure.
+Gobuster does not enumerate recursively. So, if the results show a directory path you are interested in, you will have to enumerate that specific directory.
+-w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt configures Gobuster to use the directory-list-2.3-medium.txt wordlist to enumerate. Each entry of the wordlist is appended to the configured URL.
+-r configures Gobuster to follow the redirect responses received from the sent requests. If a status code 301 was received, Gobuster will navigate to the redirect URL that is included in the response.
+Let’s look at a second example where we use the -x flag to specify what type of files we want to enumerate:
+gobuster dir -u "http://www.example.thm/secret" -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -x .js - to look for js files into the directory /secret
+To read the file curl http://www.offensivetools.thm/secret/FILENAME.js - to read the js file from the directory /secret
+
+Subdomain enumeration
+
+DNS
