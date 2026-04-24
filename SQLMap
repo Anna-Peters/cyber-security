@@ -1,0 +1,16 @@
+SQL injection vulnerabilities
+SELECT * FROM users WHERE username = 'John' AND password = 'abc' OR 1=1;-- -';
+This statement looks similar to the previous SQL query but now adds another condition with the operator OR. This query will see if there is a user, John. Then, it will check if John has the password abc (which he could not have because the attacker entered a random password). 
+Ideally, the query should fail here because it expects both username and password to be correct, as there is an AND operator between them. But, this query has another condition, OR, between the password and a statement 1=1. Any one of them being true will make the whole SQL 
+query successful. The password failed, so the query will check the next condition, which checks if 1=1. As we know, 1=1 is always true, so it will ignore the random password entered before this and consider this statement as true, which will successfully execute this query. 
+The -- - at the end of the query would comment anything after 1=1, 
+which means the query would be successfully executed, and the attacker would get logged in to John’s user account.
+One of the important things to note here is the use of a single quote ' after abc. Without this single quote,' the whole string 'abc OR 1=1;-- -' would be considered the password, which is not intended. However, if we add a single quote ' after abc, the password would look 
+like 'abc' OR 1=1;---', which encloses the original string abc in the query and allows us to introduce a logical condition OR 1=1, which is always true.
+
+Automated SQL ingextion tools
+1. Check Request URL in Network tab
+2. Send sqlmap -u 'URL' --level=5 
+3. sqlmap -u 'URL' --dbs to uncover databases
+4. sqlmap -u 'URL' -D %databasename% --tables to uncover tables
+5. sqlmap -u 'URL' -D %databasename% -T %tablename% --dump to see all table records
