@@ -1,0 +1,4 @@
+Port scanning
+1. sudo msfconsole
+2. search portscan to fine the module
+3. auxiliary/scanners/tcp >> nmap -sS target_ip_address
